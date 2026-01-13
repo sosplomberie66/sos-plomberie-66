@@ -5,16 +5,15 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  // Year footer
+  // Footer year
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Build a clean default message
-  function buildDefaultMessage(source = "site") {
+  function defaultMessage(source = "site") {
     return `Bonjour, je vous contacte depuis le site (source: ${source}). J’ai besoin d’un plombier à Perpignan / 66. Pouvez-vous me rappeler ?`;
   }
 
-  function buildFormMessage() {
+  function formMessage() {
     const name = ($("#name")?.value || "").trim();
     const phone = ($("#phone")?.value || "").trim();
     const msg = ($("#msg")?.value || "").trim();
@@ -34,10 +33,7 @@
   function smsLink(number, body) {
     const encoded = encodeURIComponent(body || "");
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    // iOS uses &body=, many others accept ?body=
-    return isIOS
-      ? `sms:${number}&body=${encoded}`
-      : `sms:${number}?body=${encoded}`;
+    return isIOS ? `sms:${number}&body=${encoded}` : `sms:${number}?body=${encoded}`;
   }
 
   function waLink(numberWa, body) {
@@ -45,82 +41,74 @@
     return `https://wa.me/${numberWa}?text=${encoded}`;
   }
 
-  // Apply SMS/WA links to all buttons with data-sms / data-wa
-  function hydrateQuickLinks() {
+  // Hydrate all SMS / WA buttons with a clean prefilled message
+  function hydrateLinks() {
     $$("[data-sms]").forEach((a) => {
-      const source = a.getAttribute("data-sms") || "site";
-      a.setAttribute("href", smsLink(PHONE_INTL, buildDefaultMessage(source)));
+      const src = a.getAttribute("data-sms") || "site";
+      a.setAttribute("href", smsLink(PHONE_INTL, defaultMessage(src)));
     });
 
     $$("[data-wa]").forEach((a) => {
-      const source = a.getAttribute("data-wa") || "site";
-      a.setAttribute("href", waLink(PHONE_WA, buildDefaultMessage(source)));
+      const src = a.getAttribute("data-wa") || "site";
+      a.setAttribute("href", waLink(PHONE_WA, defaultMessage(src)));
       a.setAttribute("target", "_blank");
       a.setAttribute("rel", "noopener");
     });
   }
-  hydrateQuickLinks();
+  hydrateLinks();
 
-  // Form submit => open SMS with full message
+  // Form -> open SMS with the full message
   const form = $("#quoteForm");
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      const message = buildFormMessage();
-      window.location.href = smsLink(PHONE_INTL, message);
+      window.location.href = smsLink(PHONE_INTL, formMessage());
     });
   }
 
-  // Mobile drawer
+  // Drawer mobile
   const drawer = $("#drawer");
   const burger = $(".burger");
   const closeBtn = $(".drawerClose");
   const backdrop = $(".drawerBackdrop");
-
   let lastFocused = null;
+
+  function isOpen() {
+    return drawer?.getAttribute("aria-hidden") === "false";
+  }
 
   function setDrawer(open) {
     if (!drawer || !burger) return;
-
     drawer.setAttribute("aria-hidden", open ? "false" : "true");
     burger.setAttribute("aria-expanded", open ? "true" : "false");
 
     if (open) {
       lastFocused = document.activeElement;
-      const firstFocusable = drawer.querySelector("button, a, input, textarea, [tabindex]:not([tabindex='-1'])");
-      firstFocusable?.focus();
       document.body.style.overflow = "hidden";
+      const firstFocusable = drawer.querySelector("button, a");
+      firstFocusable?.focus();
     } else {
       document.body.style.overflow = "";
       if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
     }
   }
 
-  function isOpen() {
-    return drawer?.getAttribute("aria-hidden") === "false";
-  }
-
   burger?.addEventListener("click", () => setDrawer(!isOpen()));
   closeBtn?.addEventListener("click", () => setDrawer(false));
   backdrop?.addEventListener("click", () => setDrawer(false));
 
-  // Close on ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && isOpen()) setDrawer(false);
   });
 
-  // Close drawer when clicking a menu link
-  $$("#drawer a").forEach((a) => {
-    a.addEventListener("click", () => setDrawer(false));
-  });
+  // Close drawer when clicking a link
+  $$("#drawer a").forEach((a) => a.addEventListener("click", () => setDrawer(false)));
 
-  // Basic focus trap
+  // Focus trap (simple)
   document.addEventListener("keydown", (e) => {
     if (!isOpen() || e.key !== "Tab") return;
-
-    const focusables = drawer.querySelectorAll("button, a, input, textarea, [tabindex]:not([tabindex='-1'])");
+    const focusables = drawer.querySelectorAll("button, a");
     if (!focusables.length) return;
-
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
 
