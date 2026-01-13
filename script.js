@@ -1,11 +1,11 @@
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const PHONE_INTL = "+33756878703";
   const PHONE_WA = "33756878703";
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  // Year footer
+  // Footer year
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -40,23 +40,20 @@
     return `https://wa.me/${numberWa}?text=${encoded}`;
   }
 
-  // Hydrate SMS/WA buttons
-  function hydrateLinks() {
-    $$("[data-sms]").forEach((a) => {
-      const src = a.getAttribute("data-sms") || "site";
-      a.setAttribute("href", smsLink(PHONE_INTL, defaultMessage(src)));
-    });
+  // Hydrate SMS / WA buttons
+  $$("[data-sms]").forEach((a) => {
+    const src = a.getAttribute("data-sms") || "site";
+    a.setAttribute("href", smsLink(PHONE_INTL, defaultMessage(src)));
+  });
 
-    $$("[data-wa]").forEach((a) => {
-      const src = a.getAttribute("data-wa") || "site";
-      a.setAttribute("href", waLink(PHONE_WA, defaultMessage(src)));
-      a.setAttribute("target", "_blank");
-      a.setAttribute("rel", "noopener");
-    });
-  }
-  hydrateLinks();
+  $$("[data-wa]").forEach((a) => {
+    const src = a.getAttribute("data-wa") || "site";
+    a.setAttribute("href", waLink(PHONE_WA, defaultMessage(src)));
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener");
+  });
 
-  // Form -> SMS with full message
+  // Form -> open SMS
   const form = $("#quoteForm");
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -70,53 +67,38 @@
   const burger = $(".burger");
   const closeBtn = $(".drawerClose");
   const backdrop = $(".drawerBackdrop");
+
+  if (!drawer || !burger || !closeBtn || !backdrop) return;
+
   let lastFocused = null;
 
+  function openDrawer() {
+    lastFocused = document.activeElement;
+    drawer.setAttribute("aria-hidden", "false");
+    burger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+  }
+
+  function closeDrawer() {
+    drawer.setAttribute("aria-hidden", "true");
+    burger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+  }
+
   function isOpen() {
-    return drawer?.getAttribute("aria-hidden") === "false";
+    return drawer.getAttribute("aria-hidden") === "false";
   }
 
-  function setDrawer(open) {
-    if (!drawer || !burger) return;
-    drawer.setAttribute("aria-hidden", open ? "false" : "true");
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-
-    if (open) {
-      lastFocused = document.activeElement;
-      document.body.style.overflow = "hidden";
-      const firstFocusable = drawer.querySelector("button, a");
-      firstFocusable?.focus();
-    } else {
-      document.body.style.overflow = "";
-      if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
-    }
-  }
-
-  burger?.addEventListener("click", () => setDrawer(!isOpen()));
-  closeBtn?.addEventListener("click", () => setDrawer(false));
-  backdrop?.addEventListener("click", () => setDrawer(false));
+  burger.addEventListener("click", () => (isOpen() ? closeDrawer() : openDrawer()));
+  closeBtn.addEventListener("click", closeDrawer);
+  backdrop.addEventListener("click", closeDrawer);
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isOpen()) setDrawer(false);
+    if (e.key === "Escape" && isOpen()) closeDrawer();
   });
 
-  $$("#drawer a").forEach((a) => a.addEventListener("click", () => setDrawer(false)));
-
-  // Focus trap
-  document.addEventListener("keydown", (e) => {
-    if (!isOpen() || e.key !== "Tab") return;
-    const focusables = drawer.querySelectorAll("button, a");
-    if (!focusables.length) return;
-
-    const first = focusables[0];
-    const last = focusables[focusables.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  });
-})();
+  // Close drawer when clicking a link
+  $$("#drawer a").forEach((a) => a.addEventListener("click", closeDrawer));
+});
