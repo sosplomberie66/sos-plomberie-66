@@ -1,4 +1,4 @@
-# SOS Plomberie 66 — Site vitrine
+# SOS Plombier 66 — Site vitrine
 
 Site vitrine **responsive** prêt pour **GitHub Pages**.
 
