@@ -10,7 +10,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   function defaultMessage(source = "site") {
-    return `Bonjour, je vous contacte depuis le site (source: ${source}). J’ai besoin d’un plombier à Perpignan / 66. Pouvez-vous me rappeler ?`;
+    return `Bonjour, je vous contacte depuis le site (source: ${source}). J’ai besoin d’un plombier. Pouvez-vous me rappeler ?`;
   }
 
   function formMessage() {
