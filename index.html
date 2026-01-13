@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SOS Plomberie 66 — Dépannage plomberie 24h/24 7j/7 dans le 66." />
+  <title>SOS Plomberie 66 | Dépannage 24/7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">
+        <img class="logo" src="assets/A_vector-style_logo_for_%22SOS_Plomberie_66%22_is_desi.png" alt="Logo SOS Plomberie 66" />
+        <div class="brandText">
+          <div class="brandName">SOS Plomberie 66</div>
+          <div class="brandTag">Dépannage 24h/24 • 7j/7</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#services">Services</a>
+        <a href="#zone">Zone</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <a class="btn btnPrimary" href="tel:+33700000000" id="callTop">📞 07 00 00 00 00</a>
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer">☰</button>
+      </div>
+    </div>
+    <div class="stripes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="heroText">
+          <h1>Dépannage plomberie <span class="accent">24h/24 – 7j/7</span></h1>
+          <p>Intervention rapide dans le <strong>66</strong> : fuite, débouchage, chauffe-eau, sanitaire.</p>
+          <div class="heroCtas">
+            <a class="btn btnPrimary btnLg" href="tel:+33700000000">📞 Appeler maintenant</a>
+            <a class="btn btnGhost btnLg" href="#contact">Demander un devis</a>
+          </div>
+          <ul class="bullets">
+            <li>✅ Déplacement rapide</li>
+            <li>✅ Devis clair</li>
+            <li>✅ Intervention garantie</li>
+          </ul>
+        </div>
+
+        <aside class="heroCard">
+          <div class="heroCardTitle">Aperçu mobile</div>
+          <div class="heroCardText">Maquette responsive style catalan (rouge/jaune).</div>
+          <div class="miniStripes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="mockWrap">
+            <img class="mockImg" src="assets/A_digital_mockup_showcases_a_mobile-friendly_websi.png" alt="Aperçu mobile du site" />
+          </div>
+          <small class="muted">Modifie ton numéro dans <code>script.js</code>.</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <h2>Services</h2>
+        <p class="lead">Les interventions les plus demandées.</p>
+        <div class="cards">
+          <article class="card"><div class="cardTitle">🚰 Recherche de fuite</div><p>Détection, réparation, remise en service.</p></article>
+          <article class="card"><div class="cardTitle">🧼 Débouchage</div><p>Évier, douche, WC, canalisations.</p></article>
+          <article class="card"><div class="cardTitle">🔥 Chauffe-eau</div><p>Dépannage, remplacement, entretien.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="zone">
+      <div class="container">
+        <h2>Zone d’intervention</h2>
+        <p class="lead">Perpignan et alentours — tout le département <strong>66</strong>.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="container contactGrid">
+        <div>
+          <h2>Contact</h2>
+          <p class="lead">Appel ou message — réponse rapide.</p>
+          <div class="contactBox">
+            <div class="contactRow"><span>📞 Téléphone</span> <a class="link" href="tel:+33700000000" id="callBottom">07 00 00 00 00</a></div>
+            <div class="contactRow"><span>🕒 Horaires</span> <span>24h/24 • 7j/7</span></div>
+            <div class="contactRow"><span>📍 Zone</span> <span>Pyrénées-Orientales (66)</span></div>
+          </div>
+        </div>
+
+        <form class="form" onsubmit="return window.handleQuote(event)">
+          <div class="field"><label for="name">Nom</label><input id="name" name="name" autocomplete="name" placeholder="Votre nom" required /></div>
+          <div class="field"><label for="phone">Téléphone</label><input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="06…" required /></div>
+          <div class="field"><label for="msg">Votre demande</label><textarea id="msg" name="msg" rows="4" placeholder="Décrivez le problème" required></textarea></div>
+          <button class="btn btnPrimary btnLg" type="submit">Envoyer la demande</button>
+          <p class="muted">Démo : ouvre un email pré-rempli (pas de serveur).</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerGrid">
+      <div class="footBrand">
+        <img class="logoSm" src="assets/A_vector-style_logo_for_%22SOS_Plomberie_66%22_is_desi.png" alt="" />
+        <div><div class="brandName">SOS Plomberie 66</div><div class="muted">Dépannage plomberie • 24/7</div></div>
+      </div>
+      <div class="muted">© <span id="year"></span> — Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <div class="callBar" role="region" aria-label="Barre d'appel">
+    <a class="callBarBtn" href="tel:+33700000000" id="callSticky">
+      <span class="callIcon">📞</span>
+      <span><strong>Urgence plomberie 7j/7</strong><br/><span class="callNumber">07 00 00 00 00</span></span>
+    </a>
+  </div>
+
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawerPanel">
+      <button class="drawerClose" aria-label="Fermer le menu">✕</button>
+      <a href="#services">Services</a>
+      <a href="#zone">Zone</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btnPrimary" href="tel:+33700000000">📞 Appeler</a>
+    </div>
+    <div class="drawerBackdrop"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

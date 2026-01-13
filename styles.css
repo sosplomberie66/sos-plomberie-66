@@ -1,0 +1,57 @@
+:root{--red:#c61818;--yellow:#f5c422;--dark:#161a21;--mid:#465062;--alt:#f6f7fb;--border:#e7ebf2;--shadow:0 14px 40px rgba(10,15,25,.12);--container:1100px}
+*{box-sizing:border-box}html,body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--dark)}
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+.header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50}
+.nav{display:flex;align-items:center;gap:18px;min-height:78px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:60px;height:60px;object-fit:contain}
+.brandName{font-weight:800}
+.brandTag{font-size:13px;color:var(--mid)}
+.menu{display:flex;gap:18px;margin-left:auto}
+.menu a{font-weight:600;color:var(--mid);text-decoration:none}
+.actions{display:flex;gap:10px;align-items:center}
+.burger{display:none;border:1px solid var(--border);background:#fff;border-radius:14px;padding:10px 12px;font-size:18px}
+.stripes{display:flex;height:10px}.stripes span:nth-child(odd){background:var(--red);flex:1}.stripes span:nth-child(even){background:var(--yellow);flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:16px;padding:10px 14px;font-weight:800;border:1px solid transparent;text-decoration:none}
+.btnPrimary{background:var(--red);color:#fff}.btnGhost{background:#fff;border-color:rgba(198,24,24,.45);color:var(--red)}
+.btnLg{padding:14px 18px;border-radius:18px}
+.hero{background:linear-gradient(180deg, rgba(245,196,34,.95) 0%, #fff 70%);padding:42px 0 22px}
+.heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+h1{font-size:clamp(34px,3.6vw,52px);letter-spacing:-.02em;margin:0 0 12px}
+h2{font-size:clamp(24px,2.4vw,34px);letter-spacing:-.01em;margin:0 0 12px}
+p{line-height:1.55;color:var(--mid)}
+.accent{color:var(--red)}
+.heroCtas{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+.bullets{list-style:none;padding:0;margin:10px 0 0;display:flex;gap:12px;flex-wrap:wrap}
+.bullets li{background:#fff;border:1px solid var(--border);padding:10px 12px;border-radius:16px}
+.heroCard{background:#fff;border:1px solid var(--border);border-radius:24px;padding:18px;box-shadow:var(--shadow)}
+.heroCardTitle{font-weight:800;font-size:18px;margin-bottom:6px}
+.miniStripes{display:flex;height:8px;border-radius:999px;overflow:hidden;margin:12px 0}.miniStripes span{flex:1}.miniStripes span:nth-child(odd){background:var(--red)}.miniStripes span:nth-child(even){background:var(--yellow)}
+.mockWrap{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:#fff}
+.mockImg{display:block;width:100%;height:auto}
+.section{padding:48px 0}.section.alt{background:var(--alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.lead{margin-top:0;font-size:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.card{background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:0 10px 26px rgba(10,15,25,.06)}
+.cardTitle{font-weight:800;margin-bottom:8px}.card p{margin:0}
+.contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contactBox{background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px}
+.contactRow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--border)}.contactRow:last-child{border-bottom:none}
+.link{color:var(--red);font-weight:800}
+.form{background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:0 10px 26px rgba(10,15,25,.06)}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+label{font-weight:700}
+input,textarea{border:1px solid var(--border);border-radius:16px;padding:12px 12px;font:inherit}
+.footer{padding:22px 0;background:#0f1218;color:#fff}
+.footerGrid{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.footBrand{display:flex;align-items:center;gap:10px}
+.logoSm{width:46px;height:46px;object-fit:contain;border-radius:12px;background:#fff}
+.callBar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;padding:12px 14px;background:rgba(15,18,24,.94);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.12)}
+.callBarBtn{display:flex;align-items:center;gap:12px;background:linear-gradient(90deg,var(--red),#9f1212);padding:12px 14px;border-radius:18px;color:#fff;font-weight:800}
+.callNumber{font-size:18px}
+.drawer{position:fixed;inset:0;display:none;z-index:100}.drawer.isOpen{display:block}
+.drawerBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.drawerPanel{position:absolute;top:0;right:0;height:100%;width:min(340px,92vw);background:#fff;padding:18px;display:flex;flex-direction:column;gap:14px;border-left:1px solid var(--border)}
+.drawerPanel a{padding:10px 12px;border-radius:14px;font-weight:700;color:var(--mid);text-decoration:none}
+.drawerClose{align-self:flex-end;border:1px solid var(--border);background:#fff;border-radius:14px;padding:10px 12px;font-size:16px}
+@media (max-width:920px){.menu{display:none}.burger{display:inline-flex}.heroGrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.contactGrid{grid-template-columns:1fr}.callBar{display:block}.actions .btnPrimary{display:none}}
