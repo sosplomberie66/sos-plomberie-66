@@ -1,239 +1,378 @@
-/* styles.css */
-:root{
-  --red:#c61818;
-  --yellow:#f5c422;
-  --dark:#161a21;
-  --mid:#465062;
-  --bg:#ffffff;
-  --alt:#f6f7fb;
-  --border:#e7ebf2;
-  --shadow:0 14px 40px rgba(10,15,25,.12);
-  --shadow2:0 10px 26px rgba(10,15,25,.07);
-  --container:1100px;
-  --focus:0 0 0 4px rgba(198,24,24,.18);
-  --radius:18px;
-}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#c61818" />
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--dark);background:var(--bg)}
-a{color:inherit;text-decoration:none}
-p{line-height:1.6;color:var(--mid)}
-strong{font-weight:900}
+  <title>SOS Plombier 66 | Plombier à Perpignan 24h/24 – 7j/7</title>
+  <meta name="description" content="SOS Plombier 66 — Plombier à Perpignan (66). Dépannage 24h/24 – 7j/7 : fuite, débouchage, chauffe-eau, WC, sanitaire. Appel, SMS ou WhatsApp." />
 
-.container{max-width:var(--container);margin:0 auto;padding:0 20px}
-.lead{margin-top:0;font-size:18px}
-.muted{color:#6c778a}
-.tiny{font-size:12px}
-.accent{color:var(--red)}
+  <!-- Open Graph -->
+  <meta property="og:title" content="SOS Plombier 66 | Plombier Perpignan 24/7" />
+  <meta property="og:description" content="Dépannage plomberie 24h/24 – 7j/7 à Perpignan et dans le 66. Appel, SMS ou WhatsApp." />
+  <meta property="og:type" content="website" />
+  <!-- IMPORTANT: met ton vrai domaine ici (og:image doit être ABSOLU) -->
+  <meta property="og:image" content="https://TON-DOMAINE.FR/plombier-perpignan.png" />
 
-.skip{
-  position:absolute;left:-999px;top:10px;background:#fff;padding:10px 12px;
-  border-radius:12px;border:1px solid var(--border);
-}
-.skip:focus{left:10px;outline:none;box-shadow:var(--focus)}
+  <!-- Icons (logo à la racine) -->
+  <link rel="icon" href="./plombier-perpignan.png" />
 
-.header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-}
-.nav{display:flex;align-items:center;gap:18px;min-height:78px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{width:60px;height:60px;object-fit:contain}
-.brandName{font-weight:900;letter-spacing:-.01em}
-.brandTag{font-size:13px;color:var(--mid)}
-.menu{display:flex;gap:18px;margin-left:auto}
-.menu a{font-weight:800;color:var(--mid);padding:10px 10px;border-radius:14px}
-.menu a:hover{background:rgba(198,24,24,.06);color:var(--dark)}
-.actions{display:flex;gap:10px;align-items:center}
-.burger{
-  display:none;border:1px solid var(--border);background:#fff;
-  border-radius:14px;padding:10px 12px;font-size:18px;
-}
-.burger:focus{outline:none;box-shadow:var(--focus)}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-.stripes{display:flex;height:10px}
-.stripes span:nth-child(odd){background:var(--red);flex:1}
-.stripes span:nth-child(even){background:var(--yellow);flex:1}
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
 
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  border-radius:16px;padding:12px 14px;font-weight:900;border:1px solid transparent;
-  transition:transform .08s ease, filter .2s ease, background .2s ease;
-}
-.btn:focus{outline:none;box-shadow:var(--focus)}
-.btn:hover{transform:translateY(-1px)}
-.btnSm{padding:10px 12px;border-radius:14px;font-weight:900}
-.btnLg{padding:14px 18px;border-radius:18px}
-.full{width:100%}
+  <header class="header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Aller à l'accueil">
+        <img class="logo" src="./plombier-perpignan.png" alt="Logo SOS Plombier 66" width="48" height="48" />
+        <div class="brandText">
+          <div class="brandName">SOS Plombier 66</div>
+          <div class="brandTag">Perpignan • Dépannage 24h/24 • 7j/7</div>
+        </div>
+      </a>
 
-.btnPrimary{background:var(--red);color:#fff}
-.btnPrimary:hover{filter:brightness(.96)}
-.btnGhost{background:#fff;border-color:rgba(198,24,24,.40);color:var(--red)}
-.btnGhost:hover{background:rgba(198,24,24,.06)}
-.partnerBtn{border-style:dashed}
+      <nav class="menu" aria-label="Menu principal">
+        <a href="#services">Services</a>
+        <a href="#zone">Zone</a>
+        <a href="#engagements">Engagements</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-.hero{
-  background:
-    radial-gradient(900px 300px at 85% 25%, rgba(198,24,24,.14), transparent 60%),
-    linear-gradient(180deg, rgba(245,196,34,.95) 0%, rgba(255,255,255,1) 72%);
-  padding:44px 0 22px;
-}
-.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
-.kicker{
-  display:inline-flex;gap:10px;align-items:center;
-  font-weight:900;color:#7a3b00;margin:0 0 10px;
-  background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.06);
-  padding:8px 10px;border-radius:999px;
-}
-h1{font-size:clamp(34px,3.6vw,54px);letter-spacing:-.03em;margin:0 0 12px}
-h2{font-size:clamp(24px,2.4vw,34px);letter-spacing:-.01em;margin:0 0 12px}
-.heroLead{font-size:18px;margin:0 0 18px}
-.heroCtas{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 10px}
-.bullets{
-  list-style:none;padding:0;margin:10px 0 0;
-  display:flex;gap:10px;flex-wrap:wrap;
-}
-.bullets li{
-  background:#fff;border:1px solid var(--border);padding:10px 12px;border-radius:16px;
-  box-shadow:0 6px 16px rgba(10,15,25,.05);
-}
-.trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-.trustItem{
-  background:#fff;border:1px solid var(--border);
-  padding:10px 12px;border-radius:16px;font-weight:800;
-}
+      <div class="actions">
+        <a class="btn btnPrimary btnSm" href="tel:+33756878703" id="callTop">
+          📞 <span class="phoneText">07 56 87 87 03</span>
+        </a>
 
-.heroCard{
-  background:#fff;border:1px solid var(--border);border-radius:24px;padding:18px;
-  box-shadow:var(--shadow);
-}
-.heroCardTitle{font-weight:900;font-size:18px;margin-bottom:6px}
-.heroCardText{margin:0 0 12px}
-.miniStripes{display:flex;height:8px;border-radius:999px;overflow:hidden;margin:12px 0}
-.miniStripes span{flex:1}
-.miniStripes span:nth-child(odd){background:var(--red)}
-.miniStripes span:nth-child(even){background:var(--yellow)}
+        <button class="burger" type="button"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          aria-controls="drawer">☰</button>
+      </div>
+    </div>
 
-.logoCard{
-  border:1px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-  background:#fff;
-  padding:10px;
-  box-shadow:var(--shadow2);
-}
-.logoCard img{display:block;width:100%;height:auto}
+    <div class="stripes" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </header>
 
-.quick{display:grid;gap:10px;margin-top:12px}
+  <main id="contenu">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="heroText">
+          <p class="kicker">🔴🟡 Service local • Intervention rapide</p>
 
-.heroBadges{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px}
-.badge{
-  background:rgba(198,24,24,.08);
-  border:1px solid rgba(198,24,24,.18);
-  color:var(--red);
-  font-weight:900;
-  padding:8px 10px;
-  border-radius:999px;
-  font-size:13px;
-}
+          <h1>Plombier à Perpignan <span class="accent">24h/24 – 7j/7</span></h1>
 
-.section{padding:52px 0}
-.section.alt{background:var(--alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.sectionHead{margin-bottom:18px}
+          <p class="heroLead">
+            Dépannage plomberie dans le <strong>66</strong> :
+            fuite, débouchage, chauffe-eau, WC, sanitaire.
+            <strong>Travail propre</strong>, <strong>prix annoncés</strong>, <strong>intervention garantie</strong>.
+          </p>
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:22px;padding:18px;
-  box-shadow:var(--shadow2);
-}
-.cardTitle{font-weight:900;margin-bottom:8px}
-.card p{margin:0}
-.card.urgent{
-  border-color:rgba(198,24,24,.25);
-  background:linear-gradient(180deg, rgba(198,24,24,.06), #fff 60%);
-}
+          <div class="heroCtas">
+            <a class="btn btnPrimary btnLg" href="tel:+33756878703">📞 Appeler maintenant</a>
+            <a class="btn btnGhost btnLg" href="sms:+33756878703" data-sms="hero">📩 SMS direct</a>
+            <a class="btn btnGhost btnLg" href="https://wa.me/33756878703" data-wa="hero">💬 WhatsApp</a>
+            <a class="btn btnGhost btnLg" href="#contact">Devis / infos</a>
+          </div>
 
-.zoneGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-.zoneBox{background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow2)}
-.zoneTitle{font-weight:900;margin-bottom:8px}
+          <div class="trust" aria-label="Gages de confiance">
+            <div class="trustItem">🕒 <strong>24/7</strong> urgence</div>
+            <div class="trustItem">🧰 <strong>Pro</strong> outillé</div>
+            <div class="trustItem">🧾 <strong>Facture</strong> / assurance</div>
+            <div class="trustItem">🧼 <strong>Propre</strong> & soigné</div>
+          </div>
 
-.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-.review{margin:0;background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow2)}
-.review blockquote{margin:0 0 12px;font-weight:800;color:var(--dark)}
-.review figcaption{color:var(--mid)}
+          <div class="notice">
+            <strong>Urgence ?</strong> Coupez l’eau si possible, mettez un seau, et appelez : <a class="linkInline" href="tel:+33756878703">07 56 87 87 03</a>.
+          </div>
+        </div>
 
-.contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-.contactBox{background:#fff;border:1px solid var(--border);border-radius:22px;padding:18px;box-shadow:var(--shadow2)}
-.contactRow{
-  display:flex;justify-content:space-between;gap:12px;
-  padding:10px 0;border-bottom:1px dashed var(--border);
-}
-.contactRow:last-child{border-bottom:none}
-.link{color:var(--red);font-weight:900}
-.contactCtas{display:grid;gap:10px;margin-top:14px}
+        <aside class="heroCard" aria-label="Carte contact">
+          <div class="heroCardTop">
+            <div class="heroCardTitle">Contact rapide</div>
+            <div class="heroCardSub">Perpignan & Pyrénées-Orientales (66)</div>
+          </div>
 
-.form{
-  background:#fff;border:1px solid var(--border);
-  border-radius:22px;padding:18px;box-shadow:var(--shadow2);
-}
-.formHead{margin-bottom:10px}
-.formTitle{font-weight:900;font-size:18px;margin-bottom:4px}
-.formSub{color:var(--mid);font-weight:600}
-.field{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
-label{font-weight:900}
-input,textarea{
-  border:1px solid var(--border);
-  border-radius:16px;padding:12px 12px;font:inherit;
-  background:#fff;
-}
-input:focus,textarea:focus{outline:none;box-shadow:var(--focus);border-color:rgba(198,24,24,.35)}
+          <div class="heroCardBody">
+            <div class="cardLogo">
+              <img src="./plombier-perpignan.png" alt="Logo SOS Plombier 66" loading="lazy" decoding="async" width="84" height="84" />
+            </div>
 
-.footer{padding:22px 0;background:#0f1218;color:#fff}
-.footerGrid{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.footBrand{display:flex;align-items:center;gap:10px}
-.logoSm{width:46px;height:46px;object-fit:contain;border-radius:12px;background:#fff}
+            <div class="quickActions">
+              <a class="btn btnPrimary btnLg full" href="tel:+33756878703">📞 Appeler</a>
+              <a class="btn btnGhost btnLg full" href="sms:+33756878703" data-sms="card">📩 SMS</a>
+              <a class="btn btnGhost btnLg full" href="https://wa.me/33756878703" data-wa="card">💬 WhatsApp</a>
+            </div>
 
-.callBar{
-  position:fixed;left:0;right:0;bottom:0;z-index:60;
-  display:none;padding:12px 14px;
-  background:rgba(15,18,24,.94);
-  backdrop-filter:blur(10px);
-  border-top:1px solid rgba(255,255,255,.12);
-}
-.callBarBtn{
-  display:flex;align-items:center;gap:12px;
-  background:linear-gradient(90deg,var(--red),#9f1212);
-  padding:12px 14px;border-radius:18px;color:#fff;font-weight:900;
-}
-.callIcon{font-size:22px}
-.callNumber{font-size:18px}
+            <div class="badges" aria-label="Prestations">
+              <span class="badge">Fuite</span>
+              <span class="badge">Débouchage</span>
+              <span class="badge">Chauffe-eau</span>
+              <span class="badge">WC</span>
+              <span class="badge">Sanitaire</span>
+            </div>
 
-.drawer{position:fixed;inset:0;display:none;z-index:100}
-.drawer.isOpen{display:block}
-.drawerBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
-.drawerPanel{
-  position:absolute;top:0;right:0;height:100%;
-  width:min(340px,92vw);
-  background:#fff;padding:18px;
-  display:flex;flex-direction:column;gap:12px;
-  border-left:1px solid var(--border);
-}
-.drawerPanel a{padding:10px 12px;border-radius:14px;font-weight:900;color:var(--mid)}
-.drawerPanel a:hover{background:rgba(198,24,24,.06);color:var(--dark)}
-.drawerClose{
-  align-self:flex-end;border:1px solid var(--border);
-  background:#fff;border-radius:14px;padding:10px 12px;font-size:16px;
-}
+            <p class="muted small">Réponse rapide • Devis clair selon la situation</p>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-@media (max-width: 920px){
-  .menu{display:none}
-  .burger{display:inline-flex}
-  .heroGrid{grid-template-columns:1fr;gap:18px}
-  .cards,.zoneGrid,.reviews{grid-template-columns:1fr}
-  .contactGrid{grid-template-columns:1fr}
-  .callBar{display:block}
-  .actions .btnPrimary{display:none}
-}
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Services</h2>
+          <p class="lead">Interventions courantes à Perpignan et dans le 66.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="cardTitle">🚰 Recherche & réparation de fuite</div>
+            <p>Détection, réparation, remise en service. Conseils pour éviter les récidives.</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🧼 Débouchage canalisations</div>
+            <p>Évier, douche, WC, colonnes. Intervention propre et efficace.</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🔥 Chauffe-eau</div>
+            <p>Dépannage, remplacement, entretien. Pièces adaptées et mise en sécurité.</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🚽 WC / chasse d’eau</div>
+            <p>Mécanisme, flotteur, fuite, remplacement. Solutions durables.</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🛁 Salle de bain</div>
+            <p>Robinetterie, siphon, évacuation, petites réparations et remise en état.</p>
+          </article>
+
+          <article class="card urgent">
+            <div class="cardTitle">🚨 Urgence</div>
+            <p>Fuite importante, dégât des eaux, coupure — intervention rapide.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZONE -->
+    <section class="section alt" id="zone">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Zone d’intervention</h2>
+          <p class="lead">Perpignan et alentours — département <strong>66</strong>.</p>
+        </div>
+
+        <div class="zoneGrid">
+          <div class="zoneBox">
+            <div class="zoneTitle">📍 Perpignan</div>
+            <p>Centre-ville, quartiers, périphérie.</p>
+          </div>
+
+          <div class="zoneBox">
+            <div class="zoneTitle">🚗 Autour</div>
+            <p>Canet-en-Roussillon, Saint-Estève, Cabestany, Rivesaltes, Toulouges, Bompas…</p>
+          </div>
+
+          <div class="zoneBox">
+            <div class="zoneTitle">🧾 Transparence</div>
+            <p>Explication + devis clair selon les cas, avant intervention.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENTS -->
+    <section class="section" id="engagements">
+      <div class="container">
+        <div class="sectionHead">
+          <h2>Nos engagements</h2>
+          <p class="lead">Du sérieux, du propre, et une communication claire.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="cardTitle">✅ Prix annoncés</div>
+            <p>On explique la solution et le tarif avant d’intervenir (selon la situation).</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🧼 Travail propre</div>
+            <p>Protection de la zone, nettoyage après passage, remise en service.</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">🧾 Facture</div>
+            <p>Facture fournie (utile pour assurance / gestion locative).</p>
+          </article>
+
+          <article class="card">
+            <div class="cardTitle">⚡ Réactivité</div>
+            <p>Urgence 24/7 • Appel, SMS ou WhatsApp — réponse rapide.</p>
+          </article>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Quel est le délai d’intervention ?</summary>
+            <p>Selon la zone et l’urgence, on intervient au plus vite sur Perpignan et le 66. Appelez pour une estimation immédiate.</p>
+          </details>
+          <details>
+            <summary>Donnez-vous un devis avant intervention ?</summary>
+            <p>Oui, on annonce le tarif avant d’intervenir quand c’est possible (selon le diagnostic sur place).</p>
+          </details>
+          <details>
+            <summary>Intervenez-vous la nuit et le week-end ?</summary>
+            <p>Oui, service d’urgence 24h/24 – 7j/7.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section alt" id="contact">
+      <div class="container contactGrid">
+        <div class="contactLeft">
+          <h2>Contact</h2>
+          <p class="lead">Urgence ou devis — réponse rapide.</p>
+
+          <div class="contactBox">
+            <div class="contactRow">
+              <span>📞 Téléphone</span>
+              <a class="link" href="tel:+33756878703"><span class="phoneText">07 56 87 87 03</span></a>
+            </div>
+
+            <div class="contactRow">
+              <span>📩 SMS</span>
+              <a class="link" href="sms:+33756878703" data-sms="contact">Envoyer un SMS</a>
+            </div>
+
+            <div class="contactRow">
+              <span>💬 WhatsApp</span>
+              <a class="link" href="https://wa.me/33756878703" data-wa="contact">Ouvrir WhatsApp</a>
+            </div>
+
+            <div class="contactRow"><span>🕒 Horaires</span> <span>24h/24 • 7j/7</span></div>
+            <div class="contactRow"><span>📍 Zone</span> <span>Pyrénées-Orientales (66)</span></div>
+          </div>
+
+          <div class="contactCtas">
+            <a class="btn btnPrimary btnLg full" href="tel:+33756878703">📞 Appeler maintenant</a>
+            <a class="btn btnGhost btnLg full" href="sms:+33756878703" data-sms="contact">📩 SMS direct</a>
+            <a class="btn btnGhost btnLg full" href="https://wa.me/33756878703" data-wa="contact">💬 WhatsApp</a>
+          </div>
+
+          <small class="muted">
+            Le formulaire ci-contre ouvre votre application SMS avec un message prêt à envoyer.
+          </small>
+        </div>
+
+        <form class="form" id="quoteForm">
+          <div class="formHead">
+            <div class="formTitle">Demande rapide</div>
+            <div class="formSub">Remplissez → un SMS prêt à envoyer s’ouvre automatiquement.</div>
+          </div>
+
+          <div class="field">
+            <label for="name">Nom</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Votre nom" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="Votre numéro" required />
+          </div>
+
+          <div class="field">
+            <label for="msg">Votre demande</label>
+            <textarea id="msg" name="msg" rows="4" placeholder="Ex : fuite sous évier, débouchage WC, chauffe-eau…" required></textarea>
+          </div>
+
+          <button class="btn btnPrimary btnLg full" type="submit">Envoyer par SMS</button>
+
+          <p class="muted tiny">
+            Sur ordinateur, l’envoi SMS dépend du système. Sur mobile, c’est immédiat.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footerGrid">
+      <div class="footBrand">
+        <img class="logoSm" src="./plombier-perpignan.png" alt="Logo SOS Plombier 66" width="32" height="32" loading="lazy" decoding="async" />
+        <div>
+          <div class="brandName">SOS Plombier 66</div>
+          <div class="muted">Plombier à Perpignan • Dépannage 24/7</div>
+        </div>
+      </div>
+      <div class="muted">© <span id="year"></span> — Tous droits réservés.</div>
+    </div>
+  </footer>
+
+  <!-- Barre d’appel sticky (mobile) -->
+  <div class="callBar" role="region" aria-label="Contact rapide">
+    <a class="callBarBtn" href="tel:+33756878703">
+      <span class="callIcon">📞</span>
+      <span>
+        <strong>Urgence plombier 7j/7</strong><br />
+        <span class="callNumber phoneText">07 56 87 87 03</span>
+      </span>
+    </a>
+  </div>
+
+  <!-- Drawer mobile -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawerPanel" role="dialog" aria-modal="true" aria-label="Menu">
+      <button class="drawerClose" type="button" aria-label="Fermer le menu">✕</button>
+      <a href="#services">Services</a>
+      <a href="#zone">Zone</a>
+      <a href="#engagements">Engagements</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btnPrimary" href="tel:+33756878703">📞 Appeler</a>
+      <a class="btn btnGhost" href="sms:+33756878703" data-sms="drawer">📩 SMS</a>
+      <a class="btn btnGhost" href="https://wa.me/33756878703" data-wa="drawer">💬 WhatsApp</a>
+    </div>
+    <div class="drawerBackdrop" tabindex="-1" aria-hidden="true"></div>
+  </div>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Plumber",
+    "name": "SOS Plombier 66",
+    "telephone": "+33756878703",
+    "areaServed": "Pyrénées-Orientales (66)",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Perpignan",
+      "addressRegion": "Occitanie",
+      "addressCountry": "FR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }]
+  }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
